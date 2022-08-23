@@ -1,0 +1,147 @@
+
+
+
+
+INSERT VALUES
+
+INSERT INTO `addresses`(`address_id`, `address_line1`, `address_line2`, `city`, `state`, `country`, `zipcode`)
+VALUES 
+	 (101, 97, 'Shanti Tower Manekbaug', 'Ahmedabad','Gujarat','India','380015'),
+	(102, 98,'Satyam Skyline', 'Baroda', 'Gujarat', 'India', '381111'),
+	(103, 22, 'Mithila', 'Surat', 'Gujarat', 'India', '211432'),
+	(104, 99, 'Abhilasha', 'Mumbai', 'Maharashtra', 'India', '234654');
+
+STAR RATING VALUES LEFT.........
+
+
+INSERT INTO `department`(`department_id`, `department_name`, `department_description`)
+VALUES
+	(1,'Kitchen','cooking'),
+	(2,'Cleaning','sweep and mop'),
+	(3,'Front Staff','handle bookings'),
+	(4,'Management','handles customer and complaints');
+
+
+INSERT INTO `room_type`(`room_type_id`, `room_type_name`, `room_cost`, `room_type_description`, `smoke_friendly`, `pet_friendly`)
+ VALUES 
+	(1, 'Standard Room','1030',"1 King Bed with city views",0,1),
+	(2, 'Standard Twin Room','1230',"Two Twin Bed with city views",1,1),
+	(3, 'Executive Room','1300',"1 King Bed with city views",0,0),
+	(4, 'Club Room','1590',"2 King Bed with city views",1,1);
+
+
+INSERT INTO `guests`(`guest_id`, `guest_first_name`, `guest_last_name`, `guest_contact_number`, `guest_email_address`, `guest_credit_card`, `guest_id_proof`, `addresses_address_id`)
+VALUES 
+	(1,'Karan','Shah','635555762','karan.s@gmail.com',NULL,'/images/drivingLicense1023',101),
+	(2,'Meet','Jhaveri','74589632','meet.j@gmail.com',NULL,'/images/passport45612',102),
+	(3,'Devarsh','Sheth','74598651','devarsh.s@gmail.com',NULL,'/images/drivingLicense4889',103),
+	(4,'Digi','Gohil','48628633','digi.g@gmail.com',NULL,'/images/drivingLicense8945',104);
+
+
+INSERT INTO `room_rate_discount`(`discount_id`, `discount_rate`, `start_month`, `end_month`, `room_type_room_type_id`)
+ VALUES
+	(11,150,1,3,1),
+	(12,115,6,8,1),
+	(13,110,9,12,2),
+	(14,100,4,6,3);
+
+INSERT INTO `hotel_chain`(`hotel_chain_id`, `hotel_chain_name`, `hotel_chain_contact_number`, `hotel_chain_email_address`, `hotel_chain_website`, `hotel_chain_head_office_address_id`) 
+VALUES
+	(1,'Palm Hotel ', '45865956','palm123@gmail.com','https://www.palmhotels.com/',6),
+	(2,' Haytt Hotel','11065647','haytt13@gmail.com','https://www.haytthotels.com/',1),
+	(3,'Courtyard Hotels','54746547','courtyard113@gmail.com','https://www.courtyardhotels.com/',7),
+	(4,'Cosmopolitan Hotels','85241765','cosmo23@gmail.com','https://www.cosmopolitanhotels.com/',8);
+
+
+INSERT INTO `hotel`(`hotel_id`, `hotel_name`, `hotel_contact_number`, `hotel_email_address`, `hotel_website`, `hotel_description`, `hotel_floor_count`, `hotel_room_capacity`, `hotel_chain_id`, `addresses_address_id`, `star_ratings_star_rating`, `check_in_time`, `check_out_time`)
+	VALUES 
+		(1,' Palm Suites','60402564','ps123@gmail.com','https://www.ps123.com/','Indroda Park.',5,45,1,101,4,'12:00:00','23:00:00'),
+		(2,'Copper  Inn','54764564','cop123@gmail.com','https://www.cop123.com/','Sahaj Park.',6,55,2,102,5,'12:00:00','23:00:00'),
+		(3,'Court Inn','54964452','court.inn@gmail.com','https://www.court.com/','Fairview Park.',7,50,3,102,5,'12:00:00','23:00:00'),
+		(4,'Cosmo Inn','54876422','cosmo.inn@gmail.com','https://www.cosmo23.com/','Inorbit Mall',8,40,4,103,5,'12:00:00','23:00:00');
+
+
+
+	
+INSERT INTO `rooms`(`room_id`, `room_number`, `rooms_type_rooms_type_id`, `hotel_hotel_id`)
+ VALUES 
+	(302,112,2,1),
+	(303,113,3,1),
+	(304,114,3,4),
+	(305,115,2,4);
+
+
+INSERT INTO `hotel_services`(`service_id`, `service_name`, `service_description`, `service_cost`, `hotel_hotel_id`)
+ VALUES
+	
+	(13,'Laundry','Dry Cleaning available same day',10,1),
+	(14,'Entertainment Room','Book and watch movies',50,2),
+	(15,'Swimming Pool','Pool access to all the guests',100,2),
+	(16,'Gym','24 Hour Gym',140,3);
+
+INSERT INTO `employees`(`emp_id`, `emp_first_name`, `emp_last_name`, `emp_designation`, `emp_contact_number`, `emp_email_address`, `department_department_id`, `addresses_address_id`, `hotel_hotel_id`)
+ VALUES 
+ (21,'Satya','Shah','Waiter','12389896','satya.s@gmail.com',1,101,1),
+ (22,'Smit','Shah','Manager','56589896','smit.s1@gmail.com',3,102,1),
+ (23,'Sarjil','Patel','Cashier','85297896','sarjil.p@gmail.com',2,103,3),
+ (24,'Pankil','Sheth','Cook','76897896','pankil.s1@gmail.com',1,104,2);
+
+INSERT INTO `hotel_chain_has_hotel`(`hotel_chains_hotel_chain_id`, `hotel_hotel_id`)
+ VALUES
+ (1,1),
+ (1,2),
+ (2,3),
+ (4,4);
+
+INSERT INTO `bookings` (`booking_id`, `booking_date`, `duration_of_stay`, `check_in_date`, `check_out_date`, `booking_payment_type`, `total_rooms_booked`, `hotel_hotel_id`, `guests_guest_id`, `employees_emp_id`, `total_amount`)
+ VALUES
+	('1', '2020-08-07 ', '5', '2020-08-10 ', '2020-08-15 ', 'cash', '1', '1', '1', '23', '5900'),
+	('2', '2020-06-02 ', '20', '2020-06-08 ', '2020-06-28 ', 'card', '2', '1', '2', '21', '2300'),
+	('3', '2020-06-01 ', '10', '2020-06-08 ', '2020-06-18 ', 'card', '1', '3', '1', '23', '1100'),
+	('4', '2020-06-09 ', '2', '2020-06-11 ', '2020-06-13 ', 'card', '2', '1', '4', '22', '2900');
+
+
+INSERT INTO `rooms_booked` (`rooms_booked_id`, `bookings_booking_id`, `rooms_room_id`) 
+VALUES 
+
+('18', '1', '302'),
+('19', '2', '303'),
+('20', '3', '304'),
+('21', '3', '305');
+
+INSERT INTO `hotel_services_used_by_guests` (`service_used_id`, `hotel_services_service_id`, `bookings_booking_id`) 
+VALUES 
+
+ ('1', '13', '2'),
+ ('2', '14', '2'),
+ ('3', '15', '2'),
+ ('4', '14', '1');
+
+
+
+
+
+
+	
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
